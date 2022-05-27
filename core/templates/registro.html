@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,14 +21,14 @@
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 </head>
 <body>
-    <h1>Registrar</h1>
+
     <!-- Header Area wrapper Starts -->
     <header id="header-wrap">
       <!-- Navbar Start -->
       <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
-          <a href="index.html" class="navbar-brand"><img src="{% static 'img/logo.jpg' %}" alt=""></a>
+          <a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'img/logo.jpg' %}" alt=""></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <i class="lni-menu"></i>
           </button>
@@ -47,17 +48,359 @@
       <div id="hero-area" class="hero-area-bg">
         <div class="container">
           <div class="row">
-            <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
-              <div class="contents">
-                <h2 class="head-title">Regitrar<br>Assitidos</h2>
-                <p></p>
-          </div>
-        </div>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" class="btn btn-success" value="Registrar">
-        </form>
+            <section id="contact" class="section-padding bg-gray">
+              <div class="container">
+                <div class="section-header text-center">
+                  <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Registrar</h2>
+                  <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+                </div>
+                <div class="row contact-form-area wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="col-lg-7 col-md-12 col-sm-12">
+                    <div class="contact-block">
+                      <form  method="post" action="{% url 'form1' %}">
+                        {% csrf_token %}
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                                <<label><input type=checkbox checked name="ativo" id="ativo"> Ativo?</label>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                               <select name="id">
+                                    {% for morador in morador  %}
+                                        <option value="{{ morador.id}}">{{morador.nome}}</option>
+                                   {% endfor %}
+                                </select>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                            <div class="container">
+                            <div class="section-header text-center">
+                              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Origem</h2>
+                              <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+                            </div>
+                            </div>
+                           <div class="col-md-12">
+                            <div class="form-group">
+                             <input type="text" class="form-control" id="naturalidade" name="naturalidade" placeholder="Naturalidade" required data-error="Por Favor entre com a Naturalidade">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <<textarea class="form-control" id="descricao" placeholder="Se não for de campos.../Quando veio??/Por que?" name="descricao" rows="7" required data-error="Por Favor entre com a Descrição" ></textarea>
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tempRua">Tempo de rua:</label>
+                              <input type="number" id="tempRua" name="tempRua" min="0" max="100">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                            <div class="col-md-12">
+                            <div class="form-group">
+                              <<textarea class="form-control" id="porque" placeholder="O Por quê de esta na rua?" name="porque" rows="7" required data-error="Por Favor entre com o Por quê" ></textarea>
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                            <div class="container">
+                            <div class="section-header text-center">
+                              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Residência</h2>
+                              <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="residen">Onde mora:</label>
+                              <select id="residen" name="residen">
+                                <option value="Casa">Casa</option>
+                                <option value="Rua">Rua</option>
+                              </select>
+                                <div class="help-block with-errors"></div>
+                          </div>
+                          </div>
+                            <div class="col-md-12">
+                            <div class="form-group">
+                              <input type="text" placeholder="Local onde dorme" id="local" name="local" class="form-control" required data-error="Por Favor entre com o local onde dorme">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                            <div class="container">
+                            <div class="section-header text-center">
+                              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Identificação</h2>
+                              <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+                            </div>
+                            </div>
+                          <div class="col-md-6">
+                          <div class="form-group">
+                              <<label><input type=checkbox checked name="documento" id="documento"> Possui documento?</label>
+                              <div class="help-block with-errors"></div>
+                          </div>
+                          </div>
+                           <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="documentos">Documentos:</label>
+                            <select id="documentos" name="documentos">
+                              <option value="CTPS">CTPS</option>
+                              <option value="IDENTIDADE">IDENTIDADE</option>
+                              <option value="TITULO ELEITOR">TITULO ELEITOR</option>
+                              <option value="CPF">CPF</option>
+                              <option value="HABILITAÇÃO">HABILITAÇÃO</option>
+                              <option value="CERTIFICADO DE RESERVISTA">CERTIFICADO DE RESERVISTA</option>
+                            </select>
+                              <div class="help-block with-errors"></div>
+                          </div>
+                          </div>
+                            <div class="container">
+                            <div class="section-header text-center">
+                              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Relações Familiares</h2>
+                              <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+                            </div>
+                            </div>
+                           <div class="col-md-6">
+                           <div class="form-group">
+                               <<label><input type=checkbox checked name="familia" id="familia"> Possui Família?</label>
+                               <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                           <div class="col-md-12">
+                           <div class="form-group">
+                             <input type="text" placeholder="Onde mora?" id="ondeFami" name="ondeFami" class="form-control" required data-error="Por Favor entre com o local onde a familia mora">
+                             <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                           <div class="col-md-6">
+                           <div class="form-group">
+                           <label for="composta">Composta por:</label>
+                           <select id="composta" name="composta" multiple>
+                             <option value="Pais">Pais</option>
+                             <option value="Irmãos">Irmãos</option>
+                             <option value="Cônjuge">Cônjuge</option>
+                             <option value="Filhos">Filhos</option>
+                               <option value="Outros">Outros</option>
+                           </select>
+                           </div>
+                           </div>
+                            <div class="col-md-6">
+                           <div class="form-group">
+                             <input type="text" placeholder="Outros família" id="outroFami" name="outrosFami" class="form-control" required data-error="Por Favor entre com os outros da familia(se nao tiver deixe um 'x'">
+                             <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                            <div class="container">
+                            <div class="section-header text-center">
+                              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Condições de Saúde</h2>
+                              <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                           <div class="form-group">
+                               <<label><input type=checkbox checked name="vacinado" id="vacinado"> Vacinado?</label>
+                               <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                            <div class="col-md-6">
+                           <div class="form-group">
+                           <label for="vacinas">Vacinas:</label>
+                           <select id="vacinas" name="vacinas"  multiple>
+                             <option value="COVID">COVID</option>
+                             <option value="INFLUENZA">INFLUENZA</option>
+                             <option value="Outras">Outras</option>
+                           </select>
+                           </div>
+                           </div>
+                            <div class="col-md-6">
+                           <div class="form-group">
+                           <label for="dose">Doses:</label>
+                           <select id="dose" name="vacinas" >
+                             <option value="1dose">1ºD</option>
+                             <option value="2dose">2ºD</option>
+                             <option value="3dose">3ºD</option>
+                           </select>
+                           </div>
+                           </div>
+                            <div class="col-md-12">
+                           <div class="form-group">
+                             <input type="text" placeholder="Vacinas tomadas" id="outrosVacina" name="outrosVacina" class="form-control" required data-error="Por Favor entre com os outras vacinas tomadas(se nao tiver deixe um 'x')">
+                             <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                            <div class="col-md-6">
+                           <div class="form-group">
+                               <<label><input type=checkbox checked name="dependente" id="dependente"> Dependente?</label>
+                               <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                            <div class="col-md-6">
+                           <div class="form-group">
+                           <label for="drogas">Vacinas:</label>
+                           <select id="drogas" name="drogas" multiple>
+                             <option value="Álcool">Álcool</option>
+                             <option value="Cocaína">Cocaína</option>
+                             <option value="Crack">Crack</option>
+                             <option value="Maconha">Maconha</option>
+                           </select>
+                           </div>
+                           </div>
+                            <div class="col-md-12">
+                           <div class="form-group">
+                             <input type="text" placeholder="Outras Drogas" id="outraDroga" name="outraDroga" class="form-control" required data-error="Por Favor entre com os outras Drogas tomadas(se nao tiver deixe um 'x')">
+                             <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                            <div class="col-md-6">
+                           <div class="form-group">
+                               <<label><input type=checkbox checked name="tratamento" id="tratamento"> Faz tratamento?</label>
+                               <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                            <div class="col-md-6">
+                            <div class="form-group">
+                              <input type="text" class="form-control" id="ondeTrata" name="ondeTrata" placeholder="Onde trata?" required data-error="Por Favor entre com o lugar onde ele trata (se nao tiver deixe um 'x')">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                            <div class="col-md-6">
+                           <div class="form-group">
+                               <<label><input type=checkbox checked name="doenca" id="doenca"> Tem enfermidade ou doença crônica?</label>
+                               <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                            <div class="col-md-6">
+                           <div class="form-group">
+                             <input type="text" placeholder="Qual doença?" id="qualDoenca" name="qualDoenca" class="form-control" required data-error="Por Favor entre com a doença(se nao tiver deixe um 'x')">
+                             <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                             <div class="col-md-6">
+                           <div class="form-group">
+                               <<label><input type=checkbox checked name="tratamentoDoenca" id="tratamentoDoenca"> Faz ou Fez tratamento?</label>
+                               <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                            <div class="col-md-6">
+                            <div class="form-group">
+                              <input type="text" class="form-control" id="ondeTratamento" name="ondeTratamento" placeholder="Onde faz tratamento?" required data-error="Por Favor entre com o lugar onde ele faz tratamento (se nao tiver deixe um 'x')">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                            <div class="container">
+                            <div class="section-header text-center">
+                              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Vivência Religiosa</h2>
+                              <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+                            </div>
+                            </div>
+                              <div class="col-md-6">
+                           <div class="form-group">
+                               <<label><input type=checkbox checked name="crenca" id="crenca"> Tem alguma crença?</label>
+                               <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                            <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="religiosidade">Religiões:</label>
+                            <select id="religiosidade" name="religiosidade">
+                              <option value="Católica">Católica</option>
+                              <option value="Evangélica">Evangélica</option>
+                              <option value="Espirita">Espirita</option>
+                              <option value="Umbanda">Umbanda</option>
+                              <option value="Nenhuma">Nenhuma</option>
+                            </select>
+                              <div class="help-block with-errors"></div>
+                          </div>
+                          </div>
+                            <div class="container">
+                            <div class="section-header text-center">
+                              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Vida Profissional</Profissional></h2>
+                              <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                           <div class="form-group">
+                               <<label><input type=checkbox checked name="profissao" id="profissao"> Tem alguma Profissão?</label>
+                               <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                              <div class="col-md-6">
+                            <div class="form-group">
+                              <input type="text" class="form-control" id="qualProfi" name="qualProfi" placeholder="Qual profissão?" required data-error="Por Favor entre com a profissão(se nao tiver deixe um 'x')">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                            <div class="col-md-6">
+                           <div class="form-group">
+                               <<label><input type=checkbox checked name="trabalha" id="trabalha"> Trabalha atualmete?</label>
+                               <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                            <div class="col-md-6">
+                            <div class="form-group">
+                              <input type="text" class="form-control" id="emque" name="emque" placeholder="Em que trabalha?" required data-error="Por Favor entre com o lugar de trabalho(se nao tiver deixe um 'x')">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                            <div class="col-md-6">
+                           <div class="form-group">
+                               <<label><input type=checkbox checked name="trabalhou" id="trabalhou"> já trabalhou?</label>
+                               <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                            <div class="col-md-6">
+                            <div class="form-group">
+                              <input type="text" class="form-control" id="doque" name="doque" placeholder="Trabalhou em que?" required data-error="Por Favor entre com o lugar onde trabalhou(se nao tiver deixe um 'x')">
+                              <div class="help-block with-errors"></div>
+                            </div>
+                          </div>
+                            <div class="col-md-12">
+                           <div class="form-group">
+                             <input type="text" placeholder="O que gostaria de aprender?" id="aprender" name="aprender" class="form-control" required data-error="Por Favor entre com oque ele gostaria de aprender(se nao tiver deixe um 'x')">
+                             <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                            <div class="container">
+                            <div class="section-header text-center">
+                              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Escolaridade</h2>
+                              <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                           <div class="form-group">
+                               <<label><input type=checkbox checked name="alfabetisado" id="alfabetisado"> Alfabetizado?</label>
+                               <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                            <div class="col-md-6">
+                          <div class="form-group">
+                           <label for="grau">Escolaridade:</label>
+                            <select id="grau" name="grau">
+                              <option value="Fun/Inc">Fun/Inc</option>
+                              <option value="Fun/Com">Fun/Com</option>
+                              <option value="Médio/Inc">Médio/Inc</option>
+                              <option value="Médio/Com">Médio/Com</option>
+                              <option value="Profissionalizante">Profissionalizante</option>
+                            </select>
+                              <div class="help-block with-errors"></div>
+                          </div>
+                          </div>
+                            <div class="col-md-12">
+                           <div class="form-group">
+                             <input type="text" placeholder="Qual Curso Profissionalizante?" id="profissionalizante" name="profissionalizante" class="form-control" required data-error="Por Favor entre com o curso(se nao tiver deixe um 'x')">
+                             <div class="help-block with-errors"></div>
+                           </div>
+                           </div>
+                            <input type="submit" class="btn btn-success" value="Registrar">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </section>
       </div>
       <small class="form-text text-muted"> {{ form.nome.errors }}</small>
       <!-- Hero Area End -->
@@ -101,7 +444,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="copyright-content">
-                <p>Copyright © 2020 <a rel="nofollow" href="https://uideck.com">UIdeck</a> All Right Reserved</p>
+                <p>Copyright © 2020 <a rel="nofollow" href="https://www.linkedin.com/in/daniel-rangel-513abb15b/">Daniel Rangel DEV</a> All Right Reserved</p>
               </div>
             </div>
           </div>

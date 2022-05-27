@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
-from django.views.generic import FormView, TemplateView
-from .models import Morador, Familia
-from .forms import ContatoForm, RegistroForm
+from django.views.generic.edit import FormView, CreateView
+from .forms import *
 from django.contrib import messages
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
+from .models import *
 
 class IndexView(FormView):
     template_name = 'index.html'
@@ -19,15 +20,109 @@ class IndexView(FormView):
         messages.error(self.request, 'Erro ao enviar e-mail')
         return super(IndexView, self).form_invalid(form, *args, **kwargs)
 
-class RegistroView(FormView):
-    template_name = 'registro.html'
-    form_class = RegistroForm
-    success_url = reverse_lazy('registro')
+def Formulario(request):
+    if request.method == 'POST':
+        form = RegistroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('registro')
+        else:
+            return redirect('form1')
+    else:
+        form = RegistroForm()
+        return render(request, 'form1.html',
+                      {'form': form})
+def Registrar(request):
+    if request.method == 'POST':
+        form_ficha = FichaForm(request.POST)
+        naturalidade = request.POST.get('naturalidade')
+        descricao = request.POST.get('descricao')
+        tempRua = request.POST.get('tempRua')
+        porque = request.POST.get('porque')
+        residen = request.POST.get('residen')
+        local = request.POST.get('local')
+        documentos = request.POST.get('documentos')
+        familia = request.POST.get('familia')
+        ondeFami = request.POST.get('ondeFami')
+        composta = request.POST.get('composta')
+        outrosFami = request.POST.get('outrosFami')
+        vacinado = request.POST.get('vacinado')
+        vacinas = request.POST.get('vacinas')
+        dose = request.POST.get('dose')
+        outrosVacina = request.POST.get('outrosVacina')
+        dependente = request.POST.get('dependente')
+        drogas = request.POST.get('drogas')
+        outraDroga = request.POST.get('outraDroga')
+        tratamento = request.POST.get('tratamento')
+        ondeTrata = request.POST.get('ondeTrata')
+        doenca = request.POST.get('doenca')
+        qualDoenca = request.POST.get('qualDoenca')
+        tratamentoDoenca = request.POST.get('tratamentoDoenca')
+        ondeTratamento = request.POST.get('ondeTratamento')
+        crenca = request.POST.get('crenca')
+        religiosidade = request.POST.get('religiosidade')
+        profissao = request.POST.get('profissao')
+        qualProfi = request.POST.get('qualProfi')
+        trabalha = request.POST.get('trabalha')
+        emque = request.POST.get('emque')
+        trabalhou = request.POST.get('trabalhou')
+        doque = request.POST.get('doque')
+        aprender = request.POST.get('aprender')
+        alfabetisado = request.POST.get('alfabetisado')
+        grau = request.POST.get('grau')
+        profissionalizante = request.POST.get('profissionalizante')
+        morador_id = request.POST.get("id")
+        morador = Morador.objects.get(id=morador_id)
 
-    def Registrar(request):
-        if request.method == 'POST':
-            form = RegistroForm(request.POST)
+        FichaRegistros.objects.create(
+            naturalidade = naturalidade,
+            descricao =descricao,
+            tempRua = tempRua,
+            porque = porque,
+            residen = residen,
+            local =local,
+            documentos =documentos,
+            familia =familia,
+            ondeFami =ondeFami,
+            composta =composta,
+            outrosFami =outrosFami,
+            vacinado =vacinado,
+            vacinas =vacinas,
+            dose =dose,
+            outrosVacina =outrosVacina,
+            dependente =dependente,
+            drogas =drogas,
+            outraDroga =outraDroga,
+            tratamento =tratamento,
+            ondeTrata =ondeTrata,
+            doenca =doenca,
+            qualDoenca =qualDoenca,
+            tratamentoDoenca =tratamentoDoenca,
+            ondeTratamento =ondeTratamento,
+            crenca =crenca,
+            religiosidade =religiosidade,
+            profissao =profissao,
+            qualProfi =qualProfi,
+            trabalha =trabalha,
+            emque =emque,
+            trabalhou =trabalhou,
+            doque =doque,
+            aprender =aprender,
+            alfabetisado =alfabetisado,
+            grau =grau,
+            profissionalizante =profissionalizante,
 
-            if form.is_valid():
-                form.save()
-        return render(request, 'registro.html', {'form': form})
+            id=morador
+        )
+
+
+        if form_ficha.is_valid():
+            form_ficha.save()
+
+        return redirect('form1')
+
+    else:
+        form_ficha = FichaForm()
+        messages.error(request, 'Deu ruim')
+        return render(request, 'registro.html',
+                      {'morador': Morador.objects.all(),'form_ficha': form_ficha})
