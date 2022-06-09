@@ -646,7 +646,7 @@ hr {
 }
 
 .navbar li.active a.nav-link {
-  color: #preset;
+  color: #preset;F
 }
 
 .dropdown-toggle::after {

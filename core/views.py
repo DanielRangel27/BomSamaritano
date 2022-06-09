@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.views.generic.edit import FormView, CreateView
 from .forms import *
 from django.contrib import messages
@@ -41,34 +41,35 @@ def Registrar(request):
         porque = request.POST.get('porque')
         residen = request.POST.get('residen')
         local = request.POST.get('local')
+        documento = request.POST.get('documento') == 'on'
         documentos = request.POST.get('documentos')
-        familia = request.POST.get('familia')
+        familia = request.POST.get('familia') == 'on'
         ondeFami = request.POST.get('ondeFami')
         composta = request.POST.get('composta')
         outrosFami = request.POST.get('outrosFami')
-        vacinado = request.POST.get('vacinado')
+        vacinado = request.POST.get('vacinado') == 'on'
         vacinas = request.POST.get('vacinas')
         dose = request.POST.get('dose')
         outrosVacina = request.POST.get('outrosVacina')
-        dependente = request.POST.get('dependente')
+        dependente = request.POST.get('dependente') == 'on'
         drogas = request.POST.get('drogas')
         outraDroga = request.POST.get('outraDroga')
-        tratamento = request.POST.get('tratamento')
+        tratamento = request.POST.get('tratamento') == 'on'
         ondeTrata = request.POST.get('ondeTrata')
-        doenca = request.POST.get('doenca')
+        doenca = request.POST.get('doenca') == 'on'
         qualDoenca = request.POST.get('qualDoenca')
-        tratamentoDoenca = request.POST.get('tratamentoDoenca')
+        tratamentoDoenca = request.POST.get('tratamentoDoenca') == 'on'
         ondeTratamento = request.POST.get('ondeTratamento')
-        crenca = request.POST.get('crenca')
+        crenca = request.POST.get('crenca') == 'on'
         religiosidade = request.POST.get('religiosidade')
-        profissao = request.POST.get('profissao')
+        profissao = request.POST.get('profissao') == 'on'
         qualProfi = request.POST.get('qualProfi')
-        trabalha = request.POST.get('trabalha')
+        trabalha = request.POST.get('trabalha') == 'on'
         emque = request.POST.get('emque')
-        trabalhou = request.POST.get('trabalhou')
+        trabalhou = request.POST.get('trabalhou') == 'on'
         doque = request.POST.get('doque')
         aprender = request.POST.get('aprender')
-        alfabetisado = request.POST.get('alfabetisado')
+        alfabetisado = request.POST.get('alfabetisado') == 'on'
         grau = request.POST.get('grau')
         profissionalizante = request.POST.get('profissionalizante')
         morador_id = request.POST.get("id")
@@ -81,6 +82,7 @@ def Registrar(request):
             porque = porque,
             residen = residen,
             local =local,
+            documento = documento,
             documentos =documentos,
             familia =familia,
             ondeFami =ondeFami,
@@ -126,3 +128,25 @@ def Registrar(request):
         messages.error(request, 'Deu ruim')
         return render(request, 'registro.html',
                       {'morador': Morador.objects.all(),'form_ficha': form_ficha})
+
+
+def telabusca(request):
+
+    return render(request, 'busca.html', {'morador': Morador.objects.all()})
+    if request.method == 'POST':
+
+        id = request.POST.get('id', '')
+        print(id)
+        busca = Morador.objects.get(id=id)
+
+        return render(request, 'informacoes.html', {'busca':busca})
+def telabusca2(request):
+    id = request.POST.get('id','')
+    busca2 = FichaRegistros.objects.get(id=id)
+
+    return render(request,'busca.html',{'busca2':busca2})
+
+def telabuscaView(request, id):
+    busca = get_object_or_404(Morador, pk=id)
+    busca2 = get_object_or_404(FichaRegistros, pk=id)
+    return render(request,'informacoes.html', {'busca': busca, 'busca2': busca2})

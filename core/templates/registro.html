@@ -57,12 +57,12 @@
                 <div class="row contact-form-area wow fadeInUp" data-wow-delay="0.3s">
                   <div class="col-lg-7 col-md-12 col-sm-12">
                     <div class="contact-block">
-                      <form  method="post" action="{% url 'form1' %}">
+                      <form  method="post" action="{% url 'registro' %}">
                         {% csrf_token %}
                         <div class="row">
                           <div class="col-md-6">
                             <div class="form-group">
-                                <<label><input type=checkbox checked name="ativo" id="ativo"> Ativo?</label>
+                                <label><input type=checkbox  name="ativo" id="ativo"> Ativo?</label>
                                 <div class="help-block with-errors"></div>
                             </div>
                           </div>
@@ -90,7 +90,7 @@
                           </div>
                           <div class="col-md-12">
                             <div class="form-group">
-                              <<textarea class="form-control" id="descricao" placeholder="Se não for de campos.../Quando veio??/Por que?" name="descricao" rows="7" required data-error="Por Favor entre com a Descrição" ></textarea>
+                              <textarea class="form-control" id="descricao" placeholder="Se não for de campos.../Quando veio??/Por que?" name="descricao" rows="7" required data-error="Por Favor entre com a Descrição" ></textarea>
                               <div class="help-block with-errors"></div>
                             </div>
                           </div>
@@ -103,7 +103,7 @@
                           </div>
                             <div class="col-md-12">
                             <div class="form-group">
-                              <<textarea class="form-control" id="porque" placeholder="O Por quê de esta na rua?" name="porque" rows="7" required data-error="Por Favor entre com o Por quê" ></textarea>
+                              <textarea class="form-control" id="porque" placeholder="O Por quê de esta na rua?" name="porque" rows="7" required data-error="Por Favor entre com o Por quê" ></textarea>
                               <div class="help-block with-errors"></div>
                             </div>
                           </div>
@@ -137,7 +137,7 @@
                             </div>
                           <div class="col-md-6">
                           <div class="form-group">
-                              <<label><input type=checkbox checked name="documento" id="documento"> Possui documento?</label>
+                              <label><input type=checkbox  name="documento" id="documento" value="True"> Possui documento?</label>
                               <div class="help-block with-errors"></div>
                           </div>
                           </div>
@@ -163,7 +163,7 @@
                             </div>
                            <div class="col-md-6">
                            <div class="form-group">
-                               <<label><input type=checkbox checked name="familia" id="familia"> Possui Família?</label>
+                               <label><input type=checkbox  name="familia" id="familia" value="True"> Possui Família?</label>
                                <div class="help-block with-errors"></div>
                            </div>
                            </div>
@@ -199,7 +199,7 @@
                             </div>
                             <div class="col-md-6">
                            <div class="form-group">
-                               <<label><input type=checkbox checked name="vacinado" id="vacinado"> Vacinado?</label>
+                               <label><input type=checkbox  name="vacinado" id="vacinado" value="True">  Vacinado?</label>
                                <div class="help-block with-errors"></div>
                            </div>
                            </div>
@@ -216,7 +216,7 @@
                             <div class="col-md-6">
                            <div class="form-group">
                            <label for="dose">Doses:</label>
-                           <select id="dose" name="vacinas" >
+                           <select id="dose" name="dose" >
                              <option value="1dose">1ºD</option>
                              <option value="2dose">2ºD</option>
                              <option value="3dose">3ºD</option>
@@ -231,7 +231,7 @@
                            </div>
                             <div class="col-md-6">
                            <div class="form-group">
-                               <<label><input type=checkbox checked name="dependente" id="dependente"> Dependente?</label>
+                               <label><input type=checkbox  name="dependente" id="dependente" value="True"> Dependente?</label>
                                <div class="help-block with-errors"></div>
                            </div>
                            </div>
@@ -254,7 +254,7 @@
                            </div>
                             <div class="col-md-6">
                            <div class="form-group">
-                               <<label><input type=checkbox checked name="tratamento" id="tratamento"> Faz tratamento?</label>
+                               <label><input type=checkbox  name="tratamento" id="tratamento" value="True"> Faz tratamento?</label>
                                <div class="help-block with-errors"></div>
                            </div>
                            </div>
@@ -266,7 +266,7 @@
                           </div>
                             <div class="col-md-6">
                            <div class="form-group">
-                               <<label><input type=checkbox checked name="doenca" id="doenca"> Tem enfermidade ou doença crônica?</label>
+                               <label><input type=checkbox  name="doenca" id="doenca" value="True"> Tem enfermidade ou doença crônica?</label>
                                <div class="help-block with-errors"></div>
                            </div>
                            </div>
@@ -278,7 +278,7 @@
                            </div>
                              <div class="col-md-6">
                            <div class="form-group">
-                               <<label><input type=checkbox checked name="tratamentoDoenca" id="tratamentoDoenca"> Faz ou Fez tratamento?</label>
+                               <label><input checked type=checkbox  name="tratamentoDoenca" id="tratamentoDoenca" value="True"> Faz ou Fez tratamento?</label>
                                <div class="help-block with-errors"></div>
                            </div>
                            </div>
@@ -296,7 +296,7 @@
                             </div>
                               <div class="col-md-6">
                            <div class="form-group">
-                               <<label><input type=checkbox checked name="crenca" id="crenca"> Tem alguma crença?</label>
+                               <label><input checked type=checkbox  name="crenca" id="crenca" value="True"> Tem alguma crença?</label>
                                <div class="help-block with-errors"></div>
                            </div>
                            </div>
@@ -321,7 +321,7 @@
                             </div>
                             <div class="col-md-6">
                            <div class="form-group">
-                               <<label><input type=checkbox checked name="profissao" id="profissao"> Tem alguma Profissão?</label>
+                               <label><input type=checkbox  name="profissao" id="profissao" value="True"> Tem alguma Profissão?</label>
                                <div class="help-block with-errors"></div>
                            </div>
                            </div>
@@ -333,7 +333,7 @@
                           </div>
                             <div class="col-md-6">
                            <div class="form-group">
-                               <<label><input type=checkbox checked name="trabalha" id="trabalha"> Trabalha atualmete?</label>
+                               <label><input type=checkbox  name="trabalha" id="trabalha" value="True"> Trabalha atualmete?</label>
                                <div class="help-block with-errors"></div>
                            </div>
                            </div>
@@ -345,7 +345,7 @@
                           </div>
                             <div class="col-md-6">
                            <div class="form-group">
-                               <<label><input type=checkbox checked name="trabalhou" id="trabalhou"> já trabalhou?</label>
+                               <label><input type=checkbox  name="trabalhou" id="trabalhou" value="True"> já trabalhou?</label>
                                <div class="help-block with-errors"></div>
                            </div>
                            </div>
@@ -369,7 +369,7 @@
                             </div>
                             <div class="col-md-6">
                            <div class="form-group">
-                               <<label><input type=checkbox checked name="alfabetisado" id="alfabetisado"> Alfabetizado?</label>
+                               <label><input type=checkbox  name="alfabetisado" id="alfabetisado" value="True"> Alfabetizado?</label>
                                <div class="help-block with-errors"></div>
                            </div>
                            </div>
@@ -392,7 +392,7 @@
                              <div class="help-block with-errors"></div>
                            </div>
                            </div>
-                            <input type="submit" class="btn btn-success" value="Registrar">
+                            <input type="submit" class="btn btn-success" value="Registrar" onclick="myFunction()">
                         </div>
                       </form>
                     </div>
@@ -474,5 +474,11 @@
     <script src="{% static 'js/jquery.easing.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/contact-form-script.min.js' %}"></script>
+    <script>
+        function myFunction() {
+            const cb = document.getElementById("documento","familia","vacinado","dependente","tratamento","doenca","tratamentoDoenca","crenca","profissao","trabalha","trabalhou","alfabetisado").checked;
+            document.
+        }
+    </script>
 </body>
 </html>
