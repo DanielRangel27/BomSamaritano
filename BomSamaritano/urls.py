@@ -9,5 +9,6 @@ urlpatterns = [
     path('form1/', Formulario, name='form1'),
     path('informacoes/<int:id>', telabuscaView, name='informacoes'),
     path('busca/', telabusca, name='busca'),
+    path('teste/<int:id>', telabuscaView, name='teste'),
     path('admin/', admin.site.urls),
 ]

@@ -140,6 +140,9 @@ def telabusca(request):
         busca = Morador.objects.get(id=id)
 
         return render(request, 'informacoes.html', {'busca':busca})
+
+
+
 def telabusca2(request):
     id = request.POST.get('id','')
     busca2 = FichaRegistros.objects.get(id=id)
@@ -149,4 +152,5 @@ def telabusca2(request):
 def telabuscaView(request, id):
     busca = get_object_or_404(Morador, pk=id)
     busca2 = get_object_or_404(FichaRegistros, pk=id)
-    return render(request,'informacoes.html', {'busca': busca, 'busca2': busca2})
+    print('estou aqui')
+    return render(request, 'informacoes.html', {'busca': busca, 'busca2': busca2})

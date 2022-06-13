@@ -19,15 +19,7 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <!-- Responsive Style -->
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
-    <style>
-        table, th, td {
-          border: 1px solid;
-        }
 
-        table {
-          width: 70%;
-        }
-    </style>
 
 </head>
 <body>
@@ -56,105 +48,18 @@
       <!-- Hero Area Start -->
       <div id="hero-area" class="hero-area-bg">
         <div class="container">
-          <div class="row">
+
           <section id="contact" class="section-padding bg-gray">
-              <div class="container">
+
+              <div class="container" >
                 <div class="section-header text-center">
                   <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Informações</h2>
                   <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
                 </div>
-                <div class="row contact-form-area wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="tabela" {% include 'teste.html' %}</div>
 
-
-                        <table>
-                            <tr>
-                                <th>{{busca.id}}</th>
-                                <th>{{busca.nome}}</th>
-                            </tr>
-                            <tr>
-                                <th>{{busca.idade}}</th>
-                            </tr>
-                            <tr>
-                                <th>{{busca.endereco}}</th>
-                            </tr>
-                            <tr>
-                                <th>{{busca.data}}</th>
-                            </tr>
-                            <tr>
-                                <th>{{busca.sexo}}</th>
-                            </tr>
-                            <tr>
-                                <th>{{busca2.naturalidade}}</th>
-                                <th>{{busca2.descricao}}</th>
-                            </tr>
-
-                            <tr>
-                                <th>{{busca2.tempRua}}</th>
-                                <th>{{busca2.porque}}</th>
-                                <th>{{busca2.residen}}</th>
-                                <th>{{busca2.local}}</th>
-                            </tr>
-                            <tr >
-                                <th>{{busca2.documento}}</th>
-                                <th>{{busca2.documentos}}</th>
-                            </tr>
-
-                            <tr>
-                                <th>{{busca2.familia}}</th>
-                                <th>{{busca2.ondeFami}}</th>
-                                <th>{{busca2.composta}}</th>
-                                <th>{{busca2.outrosFami}}</th>
-                            </tr>
-
-                            <tr >
-                                <th>{{busca2.vacinado}}</th>
-                                <th>{{busca2.vacinas}}</th>
-                                <th>{{busca2.dose}}</th>
-                                <th>{{busca2.outrosVacina}}</th>
-                            </tr>
-                            <tr>
-                                <th>{{busca2.dependente}}</th>
-                                <th>{{busca2.drogas}}</th>
-                                <th>{{busca2.outraDroga}}</th>
-                                <th>{{busca2.tratamento}}</th>
-                                <th>{{busca2.ondeTrata}}</th>
-                            </tr>
-                            <tr >
-                                <th>{{busca2.doenca}}</th>
-                                <th>{{busca2.qualDoenca}}</th>
-                                <th>{{busca2.tratamentoDoenca}}</th>
-                                <th>{{busca2.ondeTratamento}}</th>
-                            </tr>
-                            <tr>
-                                <th>{{busca2.crenca}}</th>
-                                <th>{{busca2.religiosidade}}</th>
-                            </tr>
-                            <tr>
-                                <th>{{busca2.profissao}}</th>
-                                <th>{{busca2.qualProfi}}</th>
-                            </tr>
-                            <tr >
-                                <th>{{busca2.trabalha}}</th>
-                                <th>{{busca2.emque}}</th>
-                                <th>{{busca2.trabalhou}}</th>
-                                <th>{{busca2.doque}}</th>
-                            </tr>
-                            <tr >
-                                <th>{{busca2.aprender}}</th>
-                                <th>{{busca2.alfabetisado}}</th>
-                                <th>{{busca2.grau}}</th>
-                                <th>{{busca2.profissionalizante}}</th>
-                            </tr>
-
-                        
-
-
-                    </table>
-
-                  </div>
                 </div>
             </section>
-          </div>
         </div>
 
       <small class="form-text text-muted"> {{ form.nome.errors }}</small>

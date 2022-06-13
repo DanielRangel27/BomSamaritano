@@ -1414,3 +1414,27 @@ textarea {
 .social-icon .google:hover {
   background: #CE332A;
 }
+.tabela{
+  margin:auto;
+    td, th {
+    padding: .7em;
+    margin: 0;
+    /*border: 1px solid #ccc;*/
+    margin:auto;
+    }
+
+    th{
+      /*background-color: #EEE;*/
+    }
+    td{
+      font-weight:bold;
+      /*background-color: #EEE;*/
+    }
+
+    table{
+      width: 100%;
+      margin-bottom : .5em;
+      table-layout: fixed;
+      margin:auto;
+    }
+}
