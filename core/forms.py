@@ -2,6 +2,27 @@ from django import forms
 from django.core.mail.message import EmailMessage
 from .models import *
 from django.forms import ModelForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
+class CustomUsuarioCreateForm(UserCreationForm):
+    class Meta:
+        model = CustomUsuario
+        fields = ('first_name', 'last_name')
+        labels = {'username': 'Username/E-mail'}
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password1"])
+        user.email = self.cleaned_data["username"]
+        if commit:
+            user.save()
+        return user
+
+class CustomUsuarioChangeForm(UserChangeForm):
+
+    class Meta:
+        model = CustomUsuario
+        fields = ('first_name', 'last_name')
 
 class ContatoForm(forms.Form):
     nome = forms.CharField(label='Nome', max_length=100)

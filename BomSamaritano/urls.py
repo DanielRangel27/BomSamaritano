@@ -11,4 +11,8 @@ urlpatterns = [
     path('busca/', telabusca, name='busca'),
     path('teste/<int:id>', telabuscaView, name='teste'),
     path('admin/', admin.site.urls),
+
 ]
+admin.site.site_header = 'Bom Samaritano'
+admin.site.site_title = 'Bom Samaritano'
+admin.site.index_title = 'Gerenciamento Bom Samaritano'

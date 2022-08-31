@@ -152,5 +152,4 @@ def telabusca2(request):
 def telabuscaView(request, id):
     busca = get_object_or_404(Morador, pk=id)
     busca2 = get_object_or_404(FichaRegistros, pk=id)
-    print('estou aqui')
     return render(request, 'informacoes.html', {'busca': busca, 'busca2': busca2})
