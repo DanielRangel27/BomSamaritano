@@ -49,41 +49,25 @@
           <div class="row">
           <section id="contact" class="section-padding bg-gray">
               <div class="container">
-                <div class="section-header text-center">
-                  <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Buscar</h2>
+                <div class="section-header text-center" style="width: 1000px; height: 100px;">
+                  <h2 class="section-title wow fadeInDown" style="" data-wow-delay="0.3s">Buscar</h2>
                   <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
                 </div>
                 <div class="row contact-form-area wow fadeInUp" data-wow-delay="0.3s">
                   <div class="col-lg-7 col-md-12 col-sm-12">
                     <div class="contact-block">
-                        {% for Morador in Morador %}
-                        <p><a href="/Morador/{{Morador.id}}"> {{Morador.nome}}</a> </p>
-                        {{morador.id}}
-                        {% endfor %}
-                        {% for FichaRegistro in FichaRegistro %}
-                        <p><a href="/FichaRegistro/{{FichaRegistro.id}}"> {{FichaRegistro.id}}</a> </p>
+                        <p><b> Deseja excluir definitivamente?</b> </p>
 
-                        {% endfor %}
-                        <div class="container-md">
-                        <table class="table" style="width: 70%">
-                          <thead>
-                            <tr>
-                              <th scope="col">ID</th>
-                              <th scope="col">Nome</th>
-                              <th scope="col">Opções</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                          {% for morador in morador  %}
-                            <tr>
-                              <th scope="row">{{morador.id}}</th>
-                              <td>{{morador.nome}}</td>
-                              <td> <a href="{% url 'editar-morador' morador.id%}">Editar</a> <br><a href="{% url 'deletar-morador' morador.id%}">Deletar</a></td>
-                            </tr>
-                          {% endfor %}
-                          </tbody>
-                        </table>
-                        </div>
+                        <br>
+                        <form action="" method="POST">
+                            <p>
+                                Deseja excluir o registro de: <strong>{{ object }}</strong>?
+                            </p>
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+
+                        </form>
+
 
                     </div>
                   </div>

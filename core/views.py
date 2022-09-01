@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from django.views.generic.edit import FormView, CreateView
+from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
 from .forms import *
 from django.contrib import messages
 from django.urls import reverse_lazy, reverse
@@ -153,3 +153,25 @@ def telabuscaView(request, id):
     busca = get_object_or_404(Morador, pk=id)
     busca2 = get_object_or_404(FichaRegistros, pk=id)
     return render(request, 'informacoes.html', {'busca': busca, 'busca2': busca2})
+
+class FichaUpdate(UpdateView):
+    model = FichaRegistros
+    fields = '__all__'
+    template_name = 'registro.html'
+    success_url = reverse_lazy('index')
+
+class MoradorUpdate(UpdateView):
+    model = Morador
+    fields = ['nome', 'idade', 'endereco', 'sexo']
+    template_name = 'form1.html'
+    success_url = reverse_lazy('index')
+
+class FichaDelete(DeleteView):
+    model = FichaRegistros
+    template_name = 'deletar.html'
+    success_url = reverse_lazy('index')
+
+class MoradorDelete(DeleteView):
+    model = Morador
+    template_name = 'deletar.html'
+    success_url = reverse_lazy('index')

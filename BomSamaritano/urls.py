@@ -11,7 +11,10 @@ urlpatterns = [
     path('busca/', telabusca, name='busca'),
     path('teste/<int:id>', telabuscaView, name='teste'),
     path('admin/', admin.site.urls),
-
+    path('editar/ficha/<int:pk>', FichaUpdate.as_view(),name='editar-ficha'),
+    path('editar/morador/<int:pk>', MoradorUpdate.as_view(),name='editar-morador'),
+    path('excluir/ficha/<int:pk>', FichaDelete.as_view(),name='deletar-ficha'),
+    path('excluir/morador/<int:pk>', MoradorDelete.as_view(),name='deletar-morador'),
 ]
 admin.site.site_header = 'Bom Samaritano'
 admin.site.site_title = 'Bom Samaritano'
