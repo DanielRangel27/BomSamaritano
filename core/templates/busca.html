@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <!-- Responsive Style -->
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <script src="https://kit.fontawesome.com/93c2d0052f.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Header Area wrapper Starts -->
@@ -49,13 +50,13 @@
           <div class="row">
           <section id="contact" class="section-padding bg-gray">
               <div class="container">
-                <div class="section-header text-center">
+                <div class="section-header text-center" style="width: 1000px; height: 100px;">
                   <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Buscar</h2>
                   <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
                 </div>
                 <div class="row contact-form-area wow fadeInUp" data-wow-delay="0.3s">
                   <div class="col-lg-7 col-md-12 col-sm-12">
-                    <div class="contact-block">
+                    <div class="contact-block" style="width: 990px">
                         {% for Morador in Morador %}
                         <p><a href="/Morador/{{Morador.id}}"> {{Morador.nome}}</a> </p>
                         {{morador.id}}
@@ -65,7 +66,7 @@
 
                         {% endfor %}
                         <div class="container-md">
-                        <table class="table" style="width: 70%">
+                        <table id="data" class="table" >
                           <thead>
                             <tr>
                               <th scope="col">ID</th>
@@ -78,11 +79,12 @@
                             <tr>
                               <th scope="row">{{morador.id}}</th>
                               <td>{{morador.nome}}</td>
-                              <td> <a href="{% url 'editar-morador' morador.id%}">Editar</a> <br><a href="{% url 'deletar-morador' morador.id%}">Deletar</a></td>
+                              <td> <a href="{% url 'editar-morador' morador.id%}">Editar <i class="fa-sharp fa-solid fa-pen-to-square"></i></a> <br><a href="{% url 'editar-ficha' morador.id%}">Editar Ficha <i class="fa-sharp fa-solid fa-pen-to-square"></i></a><br><a href="{% url 'deletar-morador' morador.id%}">Deletar <i class="fa-sharp fa-solid fa-trash"></i></a><br><a href="{% url 'informacoes' morador.id%}">Informaçoes <i class="fa-solid fa-info"></i></a></td>
                             </tr>
                           {% endfor %}
                           </tbody>
                         </table>
+
                         </div>
 
                     </div>
@@ -166,6 +168,6 @@
     <script src="{% static 'js/scrolling-nav.js' %}"></script>
     <script src="{% static 'js/jquery.easing.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
-    <script src="{% static 'js/contact-form-script.min.js' %}"></script>
+
 </body>
 </html>
